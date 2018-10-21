@@ -29,7 +29,7 @@ def upload():
             else:
                 list_data["lists"][checklist_name]["data"] += user_chosen_object[0]
             with open(temppath + '/data/lists.json', 'w') as outfile:
-                dump(list_data, outfile) # add data
+                dump(list_data, outfile, separators=(',', ':')) # add data
         # check if it is the right method
         if request.method == 'POST' and 'photo' in request.files:
             # get the photo
@@ -69,9 +69,19 @@ def checklist():
         token = b64encode(ur_key).decode('utf-8')
         with open(temppath + '/data/lists.json', 'w') as outfile:
                 lists_exists['lists'][str(token)] = {'data':'None','list':[],'status':'home'} # new data to add
-                dump(lists_exists, outfile) # add data
+                dump(lists_exists, outfile, separators=(',', ':')) # add data
         res.set_cookie('checklist', str(token), max_age=60*60*24*365)
         return res
+
+@app.route('/delcookie/')
+def delete_cookie():
+    if 'checklist' in request.cookies:
+        res = make_response("Cookie Removed")
+        checklist_name = request.cookies['checklist']
+        res.set_cookie('checklist', checklist_name, max_age=0)
+        return res
+    else:
+        return "No matching cookie found"
 
 @app.route('/', methods=['GET'])
 def home():
