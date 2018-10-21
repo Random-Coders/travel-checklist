@@ -1,0 +1,16 @@
+* {
+	font-size: 100%;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+h1{
+  text-align: center
+}
+

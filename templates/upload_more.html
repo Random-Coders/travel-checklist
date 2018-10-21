@@ -1,19 +1,19 @@
 <html>
 <head>
     <title>Upload</title>
-    <style type="text/css">
-        .addItems {
-            font-family: monospace;
-        }
-    </style>
 </head>
 <body>
 <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+	<!-- Select which clothing is it -->
+
+	<ul>
+		{% for option in options %}
+		<input type="radio" name="option" value="{{option}}" checked>{{option}}<br>
+		{% endfor %}
+	</ul>
+	<!-- Upload more photos -->
     <input type=file name="photo">
     <input type="submit">
 </form>
-<div class="addItems">
-  <a href="/yourchecklist"><h3>Back to Checklist</h3></a>
-</div>
 </body>
 </html>

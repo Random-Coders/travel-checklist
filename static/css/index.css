@@ -1,3 +1,13 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
 /*CSS File */
 .topnav {
     overflow: hidden;
@@ -13,6 +23,19 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 25px;
+}
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
 }
 
 /* Change the color of links on hover */
@@ -37,6 +60,8 @@
     font-size: 17px;
 }
 
+
+
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
     .topnav a, .topnav input[type=text] {
@@ -50,4 +75,8 @@
     .topnav input[type=text] {
         border: 1px solid #ccc;
     }
+}
+footer {
+  padding: 1%;
+  background-color: #a3a3a3;
 }
