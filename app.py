@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, make_response, redirect
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 import os
 from json import load, dump # parse and add json data
@@ -20,7 +20,7 @@ def upload():
     else:
         return redirect("/yourchecklist", code=302)
 
-temppath = '/Users/bellacf/Desktop/Hackathon-Folder/travel-checklist'
+temppath = os.getcwd()
 
 @app.route('/yourchecklist', methods=['GET'])
 def checklist():
@@ -28,16 +28,15 @@ def checklist():
         checklist_name = request.cookies['checklist']
         with open(temppath + '/data/lists.json', 'r') as list_data:
             list_data = load(list_data)
-        list = list_data[checklist_name]
+        list = list_data[checklist_name]['data']
         return render_template('checklist.html', list=list)
     else:
         res = make_response(render_template('checklist.html', list='None'))
         with open(temppath + '/data/lists.json', 'r') as contact_data:
             lists_exists = load(contact_data) # read data
         ur_key = os.urandom(30)
-        data = '<br>'
         with open(temppath + '/data/lists.json', 'w') as outfile:
-                lists_exists['lists'] = {"your_list":data} # new data to add
+                lists_exists['lists'][str(ur_key)] = {'data':'None'} # new data to add
                 dump(lists_exists, outfile) # add data
         res.set_cookie('checklist', ur_key, max_age=60*60*24*365)
         return res
