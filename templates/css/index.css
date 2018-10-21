@@ -1,3 +1,9 @@
+body {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
 /*CSS File */
 .topnav {
     overflow: hidden;
@@ -50,4 +56,8 @@
     .topnav input[type=text] {
         border: 1px solid #ccc;
     }
+}
+footer {
+  padding: 1%;
+  background-color: #a3a3a3;
 }
