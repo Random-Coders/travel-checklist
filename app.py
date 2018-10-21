@@ -85,7 +85,16 @@ def delete_cookie():
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    if 'once' in request.cookies:
+        res = make_response(render_template('index.html'))
+        res.set_cookie('alert', 'alerted', max_age=60*60*24*365)
+        return res
+    elif 'alert' in request.cookies:
+        return render_template('index.html')
+    else:
+        res = make_response(render_template('index.html'))
+        res.set_cookie('once', 'ran', max_age=60*60*24*365)
+        return res
 
 @app.route('/about', methods=['GET'])
 def about():
