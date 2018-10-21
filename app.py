@@ -52,7 +52,10 @@ def checklist():
         with open(temppath + '/data/lists.json', 'r') as list_data:
             list_data = load(list_data)
         list = list_data[checklist_name]['data']
-        return render_template('checklist.html', list=list)
+        if list == '':
+            return render_template('checklist.html', list='None')
+        else:
+            return render_template('checklist.html', list=list)
     else:
         res = make_response(render_template('checklist.html', list='None'))
         with open(temppath + '/data/lists.json', 'r') as contact_data:
