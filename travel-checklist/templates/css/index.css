@@ -37,8 +37,6 @@
     font-size: 17px;
 }
 
-
-
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
     .topnav a, .topnav input[type=text] {
