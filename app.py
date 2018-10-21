@@ -57,7 +57,7 @@ def checklist():
             list_data = load(list_data)
         list = list_data['lists'][checklist_name]['list']
         if list == 'None':
-            return render_template('checklist.html', list='None')
+            return render_template('checklist-2.html')
         else:
             list_html = list
             print(list_html)
