@@ -32,7 +32,7 @@ def upload():
 	    return render_template('upload.html')
     else:
         return redirect("/yourchecklist", code=302)
-	
+
 temppath = os.getcwd()
 
 @app.route('/yourchecklist', methods=['GET'])
@@ -49,7 +49,7 @@ def checklist():
             lists_exists = load(contact_data) # read data
         ur_key = os.urandom(30)
         with open(temppath + '/data/lists.json', 'w') as outfile:
-                lists_exists['lists'][str(ur_key)] = {'data':'None'} # new data to add
+                lists_exists['lists'][str(ur_key)] = {'data':'None','list':[],'status':'home'} # new data to add
                 dump(lists_exists, outfile) # add data
         res.set_cookie('checklist', ur_key, max_age=60*60*24*365)
         return res
