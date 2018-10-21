@@ -15,6 +15,15 @@ configure_uploads(app, photos)
 def upload():
     # cookies
     if 'checklist' in request.cookies:
+        user_chosen_object = request.form.getlist('option')
+        print(user_chosen_object)
+        # if we have a user given value
+        if len(user_chosen_object) is not 0:
+        	checklist_name = request.cookies['checklist']
+        	with open(temppath + '/data/lists.json', 'r') as list_data:
+        		list_data = load(list_data)
+        	list = list_data["lists"][checklist_name]["list"]
+        	print(list)
         # check if it is the right method
         if request.method == 'POST' and 'photo' in request.files:
             # get the photo
@@ -29,31 +38,7 @@ def upload():
             os.remove(os.path.join(os.path.dirname(os.path.realpath(__file__)), f'static/img/{filename}'))
             # return the results
             return render_template('upload_more.html', options=[concept[0] for concept in response])
-        return render_template('upload.html')
-    else:
-        return redirect("/yourchecklist", code=302)
-
-@app.route('/upload/<object>', methods=['GET', 'POST'])
-def upload_more(object):
-    # cookies
-    if 'checklist' in request.cookies:
-        # if the browser has cookies
-        if request.method == 'POST' and 'option' in request.files:
-            print(request.files)
-        # check if it is the right method
-        if request.method == 'POST' and 'photo' in request.files:
-            # get the photo
-            filename = photos.save(request.files['photo'])
-            # init the predicter
-            classifier = Object_Predicter()
-            # predict given image
-            classifier.predict(os.path.join(os.path.dirname(os.path.realpath(__file__)), f'static/img/{filename}'))
-            # retrieve the concepts
-            response = classifier.get_top_concepts(4)
-            # remove it since we no longer need it
-            os.remove(os.path.join(os.path.dirname(os.path.realpath(__file__)), f'static/img/{filename}'))
-            # return the results
-            return render_template('upload_more.html', options=[concept[0] for concept in response])
+        # if there is no file to upload
         return render_template('upload.html')
     else:
         return redirect("/yourchecklist", code=302)
