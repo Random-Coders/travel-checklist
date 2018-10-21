@@ -3,6 +3,7 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES
 from models.object_classifier import Object_Predicter
 import os
 from json import load, dump # parse and add json data
+from base64 import b64encode
 
 app = Flask(__name__, template_folder='templates')
 
@@ -61,8 +62,9 @@ def checklist():
         with open(temppath + '/data/lists.json', 'r') as contact_data:
             lists_exists = load(contact_data) # read data
         ur_key = os.urandom(30)
+        token = b64encode(ur_key).decode('utf-8')
         with open(temppath + '/data/lists.json', 'w') as outfile:
-                lists_exists['lists'][str(ur_key)] = {'data':'None','list':[],'status':'home'} # new data to add
+                lists_exists['lists'][str(token)] = {'data':'None','list':[],'status':'home'} # new data to add
                 dump(lists_exists, outfile) # add data
         res.set_cookie('checklist', ur_key, max_age=60*60*24*365)
         return res
