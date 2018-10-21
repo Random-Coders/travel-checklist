@@ -42,8 +42,6 @@ def checklist():
         res.set_cookie('checklist', ur_key, max_age=60*60*24*365)
         return res
 
-    #return 'In Progress'
-
 @app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
