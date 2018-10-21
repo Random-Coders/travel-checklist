@@ -14,7 +14,7 @@ configure_uploads(app, photos)
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
 	# cookies
-	if 'checklist' in request.cookies:
+    if 'checklist' in request.cookies:
         # check if it is the right method
 	    if request.method == 'POST' and 'photo' in request.files:
 	    	# get the photo
