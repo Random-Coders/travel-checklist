@@ -93,9 +93,16 @@
 </div>
 
 <div class="list">
-  <h4>Your travel list contains:
+  <!-- <h4>Your travel list contains:
     {{ list }}
+  </h4> -->
+  <h4>Your travel list contains:
   </h4>
+  <ol>
+    {% for item in items %}
+      <li>{{item}}</li>
+    {% endfor %}
+  </ol>
 </div>
 
 </body>
