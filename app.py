@@ -14,10 +14,6 @@ configure_uploads(app, photos)
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
-<<<<<<< HEAD
-	# cookies
-    if 'checklist' in request.cookies:
-=======
     # cookies
     if 'checklist' in request.cookies:
         user_chosen_object = request.form.getlist('option')
@@ -34,7 +30,6 @@ def upload():
                 list_data["lists"][checklist_name]["data"] += user_chosen_object[0]
             with open(temppath + '/data/lists.json', 'w') as outfile:
                 dump(list_data, outfile, separators=(',', ':')) # add data
->>>>>>> 8bb7b5ea56918f5445fbb5dfb33a1b976283dba2
         # check if it is the right method
         if request.method == 'POST' and 'photo' in request.files:
             # get the photo
@@ -62,7 +57,7 @@ def checklist():
             list_data = load(list_data)
         list = list_data['lists'][checklist_name]['list']
         if list == 'None':
-            return render_template('checklist.html', list=['None'])
+            return render_template('checklist.html', list='None')
         else:
             list_html = list
             print(list_html)
