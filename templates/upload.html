@@ -1,11 +1,19 @@
 <html>
 <head>
     <title>Upload</title>
+    <style type="text/css">
+        .addItems {
+            font-family: monospace;
+        }
+    </style>
 </head>
 <body>
 <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
     <input type=file name="photo">
     <input type="submit">
 </form>
+<div class="addItems">
+  <a href="/yourchecklist"><h3>Back to Checklist</h3></a>
+</div>
 </body>
 </html>

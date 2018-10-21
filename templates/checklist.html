@@ -8,97 +8,73 @@
     * {
       font-family: 'Ubuntu', sans-serif;
     }
+
     /*CSS File */
     .topnav {
-        overflow: hidden;
-        background-color: #e9e9e9;
+      overflow: hidden;
+      background-color: #e9e9e9;
     }
 
     /* Style the links inside the navigation bar */
     .topnav a {
-        float: left;
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 25px;
-        font-family: monospace;
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 35px;
     }
-    .addItems {
-      font-family: monospace;
-    }
-
-    /* Change the color of links on hover */
+      /* Change the color of links on hover */
     .topnav a:hover {
-        background-color: #ddd;
-        color: black;
+      background-color: #ddd;
+      color: black;
     }
 
     /* Style the "active" element to highlight the current page */
     .topnav a.active {
-        color: ;black
+      background-color: #2196F3;
+      color: white;
     }
 
     /* Style the search box inside the navigation bar */
     .topnav input[type=text] {
-        float: bottom-center;
-        padding: 6px;
-        border: insert;
-        margin-top: 400px;
-        margin-left: 390px;
-        font-size: 17px;
+      float: bottom-center;
+      padding: 6px;
+      border: insert;
+      margin-top: 400px;
+      margin-left: 390px;
+      font-size: 17px;
     }
 
     /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
     @media screen and (max-width: 600px) {
-        .topnav a, .topnav input[type=text] {
-            float: none;
-            display: block;
-            text-align: left;
-            width: 100%;
-            margin: 0;
-            padding: 14px;
-        }
-        .topnav input[type=text] {
-            border: 1px solid #ccc;
-        }
-    }
-    .footerPos {
-      font-family: monospace;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-    .footerPos div {
-      float: left;
-      margin: auto;
-    }
-    .footerPos2 {
-      font-family: monospace;
-      position: absolute;
-      bottom: 0;
-      right: 100;
+      .topnav a, .topnav input[type=text] {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+      }
     }
     footer {
       padding: 1%;
       background-color: #a3a3a3;
     }
   </style>
-  
+
   <script src="javascript/index.js"></script>
 </head>
 <body>
-  <div class="topnav">
-    <a class="active" href="/">Home</a>
+<div class="topnav">
+    <a href="/">Home</a>
     <a href="/about">About</a>
-    <a href="/contact">Contact</a>
+    <a class="active" href="/yourchecklist">Checklist</a>
     <!-- Hide Search bar for now <input type="text" placeholder="Search Food...">-->
 </div>
 
-<div class="addItems">
-  <a href="/upload"><h3>+ ADD ITEMS</h3></a>
-</div>
+<button class="btn" id="third">+ ADD ITEMS</button>
 
 <div class="list">
   <h4>Your travel list contains:
@@ -111,12 +87,11 @@
 </div>
 
 </body>
-<footer class="footerPos">
-  <div>
-  <a href= "https://github.com/SavageCoder77/travel-checklist"><img src="https://camo.githubusercontent.com/7710b43d0476b6f6d4b4b2865e35c108f69991f3/68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67" width="50" class="footerPos"></a>
-  </div>
-  <div>
-    <a href="https://www.hshacks.com/"><img src="https://www.hshacks.com/images/logo.png" width="25" height="50"></a>
-  </div>
-  <div style="clear:both"></div>
+
+<footer>
+  <img src="https://camo.githubusercontent.com/7710b43d0476b6f6d4b4b2865e35c108f69991f3/68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67" width="50" class="footerPos">
+  <a href= "https://github.com/SavageCoder77/travel-checklist" >Github</a>
+  <br>
+  <img src="https://www.hshacks.com/images/logo.png" width="25" height="50">
+  <a href="https://www.hshacks.com/">HSHacks</a>
 </footer>
