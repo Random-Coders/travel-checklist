@@ -55,11 +55,13 @@ def checklist():
         checklist_name = request.cookies['checklist']
         with open(temppath + '/data/lists.json', 'r') as list_data:
             list_data = load(list_data)
-        list = list_data['lists'][checklist_name]['data']
+        list = list_data['lists'][checklist_name]['list']
         if list == 'None':
             return render_template('checklist.html', list=['None'])
         else:
             list_html = list
+            print(list_html)
+            print("list html", list_html)
             return render_template('checklist.html', list=list_html)
     else:
         res = make_response(render_template('checklist.html', list='None'))
