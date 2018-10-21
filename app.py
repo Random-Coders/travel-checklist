@@ -61,7 +61,7 @@ def checklist():
         res = make_response(render_template('checklist.html', list='None'))
         with open(temppath + '/data/lists.json', 'r') as contact_data:
             lists_exists = load(contact_data) # read data
-        ur_key = os.urandom(30)
+        ur_key = os.urandom(64)
         token = b64encode(ur_key).decode('utf-8')
         with open(temppath + '/data/lists.json', 'w') as outfile:
                 lists_exists['lists'][str(token)] = {'data':'None','list':[],'status':'home'} # new data to add
