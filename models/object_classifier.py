@@ -15,10 +15,12 @@ class Object_Predicter():
 		    self.concepts.append([concept['name'], concept['value']])
 
 	def get_concepts(self):
+		# get the list of concepts
 		return self.concepts
 
-	def get_top_concepts(self):
-		return self.concepts[0]
+	def get_top_concepts(self, top):
+		# return top four results
+		return self.concepts[:top]
 
 # if __name__ == "__main__":
 # 	classifier = Object_Predicter()
