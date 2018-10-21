@@ -71,6 +71,9 @@ body {
     display: inline-block;
 }
 
+h1 {
+  font-size: 65px;
+}
 
 #check a:hover, a:active {
     background-color: red;
@@ -97,8 +100,6 @@ body {
     margin-left: 390px;
     font-size: 17px;
 }
-
-
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
@@ -128,13 +129,16 @@ footer {
     <a href="/about">About</a>
     <a href="/yourchecklist">Checklist</a>
 </div>
-<div id="check"class="code-button">
-    <center><a href="/yourchecklist">Your Checklist</a></center>
-</div>
+
 <div class="container">
     <center>
       <h1>Travel Checklist</h1></center>
-      <center><p>A service to save a list of what you packed for your trip so you don't forget anything.</p><center> 
+
+      <div id="check">
+          <center><a href="/yourchecklist">Your Checklist</a></center>
+      </div>
+
+      <center><p>A service to save a list of what you packed for your trip so you don't forget anything.</p><center>
         <center><p>Uses image recognition to determine your items.</p></center>
 </div>​
 </body>
