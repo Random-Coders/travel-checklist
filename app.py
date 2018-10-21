@@ -25,9 +25,9 @@ def upload():
                 list_data = load(list_data)
                 list_data["lists"][checklist_name]["list"].append(user_chosen_object[0])
             if list_data["lists"][checklist_name]["data"] == 'None':
-                list_data["lists"][checklist_name]["data"] = '<ol><li>' + user_chosen_object[0] + '</li>'
+                list_data["lists"][checklist_name]["data"] = user_chosen_object[0]
             else:
-                list_data["lists"][checklist_name]["data"] += '<li>' + user_chosen_object[0] + '</li>'
+                list_data["lists"][checklist_name]["data"] += user_chosen_object[0]
             with open(temppath + '/data/lists.json', 'w') as outfile:
                 dump(list_data, outfile, separators=(',', ':')) # add data
         # check if it is the right method
@@ -55,11 +55,13 @@ def checklist():
         checklist_name = request.cookies['checklist']
         with open(temppath + '/data/lists.json', 'r') as list_data:
             list_data = load(list_data)
-        list = list_data['lists'][checklist_name]['data']
+        list = list_data['lists'][checklist_name]['list']
         if list == 'None':
-            return render_template('checklist.html', list='None')
+            return render_template('checklist.html', list=['None'])
         else:
-            list_html = list + '</ol>'
+            list_html = list
+            print(list_html)
+            print("list html", list_html)
             return render_template('checklist.html', list=list_html)
     else:
         res = make_response(render_template('checklist.html', list='None'))
