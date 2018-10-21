@@ -24,10 +24,6 @@
         text-decoration: none;
         font-size: 25px;
         font-family: monospace;
-    }
-    .addItems {
-      font-family: monospace;
-    }
 
     /* Change the color of links on hover */
     .topnav a:hover {
@@ -49,6 +45,9 @@
         margin-left: 390px;
         font-size: 17px;
     }
+    .addItems {
+        font-family: monospace;
+    }
 
     /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
     @media screen and (max-width: 600px) {
@@ -64,27 +63,16 @@
             border: 1px solid #ccc;
         }
     }
-    .footerPos {
-      font-family: monospace;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-    .footerPos2 {
-      font-family: monospace;
-      position: absolute;
-      bottom: 0;
-      right: 100;
-    }
+
   </style>
-  
+
   <script src="javascript/index.js"></script>
 </head>
 <body>
   <div class="topnav">
-    <a class="active" href="/">Home</a>
+    <a href="/">Home</a>
     <a href="/about">About</a>
-    <a href="/contact">Contact</a>
+    <a class="active" href="/yourchecklist">Checklist</a>
     <!-- Hide Search bar for now <input type="text" placeholder="Search Food...">-->
 </div>
 
