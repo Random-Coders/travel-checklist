@@ -1,2 +1,0 @@
-# travel-checklist
-travel-checklist

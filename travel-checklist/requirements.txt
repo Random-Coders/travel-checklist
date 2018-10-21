@@ -1,3 +1,0 @@
-Flask-Uploads
-Flask
-clarifai
