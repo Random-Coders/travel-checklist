@@ -47,7 +47,16 @@ def upload():
         # if there is no file to upload
         return render_template('upload.html')
     else:
-        return redirect("/yourchecklist", code=302)
+        res = make_response(render_template('upload.html'))
+        with open(temppath + '/data/lists.json', 'r') as contact_data:
+            lists_exists = load(contact_data) # read data
+        ur_key = os.urandom(64)
+        token = b64encode(ur_key).decode('utf-8')
+        with open(temppath + '/data/lists.json', 'w') as outfile:
+                lists_exists['lists'][str(token)] = {'data':'None','list':[],'status':'home'} # new data to add
+                dump(lists_exists, outfile, separators=(',', ':')) # add data
+        res.set_cookie('checklist', str(token), max_age=60*60*24*365)
+        return res
 
 @app.route('/yourchecklist', methods=['GET'])
 def checklist():
