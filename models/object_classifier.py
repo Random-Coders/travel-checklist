@@ -4,7 +4,7 @@ import os
 
 class Object_Predicter():
 	def __init__(self):
-		app = ClarifaiApp(api_key='YOURAPIKEY')
+		app = ClarifaiApp(api_key='8bf951876b164091909b8c3f54bd642f')
 		self.model = app.models.get('apparel')
 		self.concepts = []
 	def predict(self, link):
