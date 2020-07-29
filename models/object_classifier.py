@@ -2,6 +2,10 @@ from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
 import os
 
+'''
+Code used to detect item with ClaridAI
+'''
+
 class Object_Predicter():
 	def __init__(self):
 		app = ClarifaiApp(api_key='KEY')
